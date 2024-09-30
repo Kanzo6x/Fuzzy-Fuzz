@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-10 bg-white shadow-md rounded-lg p-8">
+    <h2 class="text-4xl font-bold mb-6 text-center text-gray-800">Order {{ game.name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-6">
+            <label for="phone" class="block text-lg font-semibold text-gray-700">Phone:</label>
+            <input type="text" name="phone" id="phone" class="border border-gray-300 rounded-lg w-full p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        </div>
+        <div class="mb-6">
+            <label for="address" class="block text-lg font-semibold text-gray-700">Address:</label>
+            <textarea name="address" id="address" rows="4" class="border border-gray-300 rounded-lg w-full p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+        </div>
+        <button type="submit" class="bg-blue-600 text-white p-3 rounded-lg w-full hover:bg-blue-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500">Order</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-10 max-w-md">
+    <h2 class="text-3xl font-bold text-center mb-6">Login</h2>
+    <form method="post" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 border border-gray-300">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="username" class="block text-sm font-medium">Username</label>
+            <input type="text" id="username" name="username" class="border rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="block text-sm font-medium">Password</label>
+            <input type="password" id="password" name="password" class="border rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" required>
+        </div>
+
+        {% if form.errors %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            <strong class="font-bold">Error:</strong>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300">Login</button>
+    </form>
+
+    <div class="mt-6 text-center">
+        <p>Don't have an account? <a href="{% url 'users:signup' %}" class="text-blue-600 hover:underline">Sign up here</a></p>
+    </div>
+</div>
+{% endblock %}

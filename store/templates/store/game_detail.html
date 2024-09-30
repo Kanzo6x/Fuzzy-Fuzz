@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-5">
+    <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/2 flex justify-center">
+            <img src="{{ game.cover_image.url }}" alt="{{ game.name }}" class="mb-4 shadow-lg rounded-lg w-full h-auto max-w-md"> 
+        </div>
+        <div class="md:w-1/2 md:pl-8">
+            <h2 class="text-4xl font-bold mb-4">{{ game.name }}</h2>
+            <p class="text-lg mb-4">{{ game.description }}</p>
+            <p class="text-2xl font-semibold text-green-600 mb-4">${{ game.price }}</p>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'order_game' game.id %}" class="btn btn-primary mt-4">Order Now</a>
+            {% else %}
+                <p class="text-red-600 mt-4">You have to log in first to order.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

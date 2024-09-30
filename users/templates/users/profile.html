@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+    <h2 class="text-4xl font-bold mb-6 text-gray-800">Profile</h2>
+    
+    <div class="bg-gray-100 p-6 rounded-lg mb-6">
+        <h3 class="text-3xl font-semibold text-gray-700">User Information</h3>
+        <div class="mt-4">
+            <p class="text-gray-600"><strong>Username:</strong> <span class="text-gray-600">{{ user.username }}</span></p>
+            <p class="text-gray-600"><strong>Email:</strong> <span class="text-gray-600">{{ user.email }}</span></p>
+        </div>
+    </div>
+    
+    <div>
+        <h3 class="text-2xl text-gray-800 mb-2">Previous Orders</h3>
+        <p class="text-gray-600">View your previous orders <a href="{% url 'users:previous_orders' %}" class="text-blue-600 hover:underline">here</a>.</p>
+    </div>
+</div>
+{% endblock %}
